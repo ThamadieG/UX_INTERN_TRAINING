@@ -1,0 +1,74 @@
+body, html {
+  height: 100%;
+  background-image: linear-gradient(to bottom, #5353FD, #803EBB);
+  background-size: cover;
+}
+.brandName{
+  font-size: 50px;
+  font-family: Segoe UI;
+  font-weight: bold;
+  padding-left: 20px;
+  color: #ffffff;
+}
+  img {
+    width: 50%;
+    padding-top: 20px;
+  }
+  .formcorner {
+  border-radius: 25px;
+  background: #ffffff;
+  float: right;
+  padding: 20px; 
+  width: 606px;
+  height: 100%;  
+  }
+  .form{
+  float: right;
+  padding-right: 80px;
+  padding-top: 10%;
+  }
+  
+  .username{
+  padding-left: 30%;
+  padding-top: 10%;
+  }
+  .password{
+  padding-left: 30%;
+  padding-top: 10%;
+  }
+  .ip1 {
+  border-radius: 21px;
+  background: rgb(255, 255, 255);
+  padding: 15px; 
+  width: 230px;
+  height: 10px;    
+  text-align: center;
+  }
+  .icon {
+  color: black;
+  min-width: 50px;
+  text-align: center;
+  }
+  .loginbtn{
+  padding-left: 43%;
+  padding-top: 10%;
+  }
+  .login {
+    font-family: Segoe UI;
+    font-size: 20px;
+    color: #ffffff;
+    letter-spacing: 1px;
+    line-height: 30px;
+    border-radius: 21px;
+    background-image: radial-gradient(#5353FD, #803EBB);
+    transition: all 0.3s ease 0s;
+  }
+  .psw{
+    padding-top: 50px;
+  }
+  .terms{
+    padding-left: 170px;
+    padding-top: 200px;
+  }
+  
+  

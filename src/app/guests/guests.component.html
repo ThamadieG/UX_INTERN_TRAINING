@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+  <body>
+    <nav class="navbar">
+      <div class="brandName">Prism</div>
+        <button class="btn btn-primary" style="background-color: transparent;"><i class="fa fa-user fa-3x" aria-hidden="true"></i>
+        </button>
+      
+    </nav>
+
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="card">
+          <div class="card-body" style="height: 790px;">
+            <img class="btn-md" src="assets/profile.png" alt="" style="padding-left: 100px;">
+            <h5 class="card-title" style="padding-left: 95px;">Emily Smith</h5>
+            <h6 style="padding-left: 120px; font-size: 14px;">Manager</h6>
+            <div class="button">
+            <a routerLink="/guests" routerLinkActive="active" type="button" class="btn btn-outline-dark btn-rounded" style="width: 250px; transform: translateX(11%); "><i class="fa fa-user-o pr-5"
+              aria-hidden="true"></i>Manage Guest</a>  
+            </div>
+            <div class="button">  
+            <a routerLink="/reservation" type="button" class="btn btn-outline-dark btn-rounded" style="width: 250px; transform: translateX(11%); "><i class="fa fa-calendar pr-4"
+              aria-hidden="true"></i>Manage Reservation</a> 
+            </div>  
+            <div class="button">   
+            <a routerLink="/rooms" type="button" class="btn btn-outline-dark btn-rounded" style="width: 250px; transform: translateX(11%); "><i class="fa fa-bed pr-5"
+              aria-hidden="true"></i>Manage Room</a> 
+            </div>   
+            <div class="button"> 
+            <a routerLink="/roomTypes" type="button" class="btn btn-outline-dark btn-rounded" style="width: 250px; transform: translateX(11%); "><i class="fa fa-sign-out pr-3"
+              aria-hidden="true"></i>Manage RoomTypes</a>
+            </div>                        
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-9">  
+        <div class="card">
+          <div class="heading">
+            <div class="title">Guest Manager
+              <button class="btn" [routerLink]="'/guest'" style="background-color: transparent; padding-right: 40px; float: right;"><i class="fa fa-refresh fa-2x" aria-hidden="true"></i>
+              </button>
+              <button class="btn" [routerLink]="'/addGuest'" style="background-color: transparent; padding-right: 20px; float: right;"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+              </button>  
+            </div>
+          </div>
+          <div class="card-body">
+              <!--Table-->
+              <table class="table table-hover">
+                  <!--Table head-->
+                  <thead class="thead-light">
+                      <tr class="text-black">
+                          <th>GuestNo</th>
+                          <th>Name</th>
+                          <th>PhoneNo</th>
+                          <th>Email</th>
+                          <th>IdNo</th>
+                          <th>DateOfBirth</th>
+                          <th>IsActive</th>
+                          <th>Action</th>
+                      </tr>
+                  </thead>
+                  <!--Table head-->
+                  <!--Table body-->
+                  <tbody>
+                        <tr *ngFor="let guest of guests">
+                          <td style="text-align: center;">{{guest.GuestId}}</td>
+                          <td>{{guest.Name}}</td>
+                          <td>{{guest.PhoneNo}}</td>
+                          <td>{{guest.Email}}</td>
+                          <td>{{guest.IdNo}}</td>
+                          <td>{{guest.DateOfBirth}}</td>
+                          <ng-container *ngIf="guest.IsActive === true">
+                          <td>
+                            <div class="form-check" style="background-color: #44EF55;">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="checked">
+                              <span class="checkmark"></span>
+                            </div>
+                          </td>
+                          </ng-container>
+                          <ng-container *ngIf="guest.IsActive === false">
+                            <td>
+                              <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled="disabled">
+                              </div>
+                            </td>
+                            </ng-container>
+                          <td>
+                            <button type="button" class="btn dt-edit" style="background-color: transparent;">
+                              <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" (click)="deleteItem(guest.GuestId)" class="btn dt-delete" style="background-color: transparent;">
+                              <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                          </td>
+                      </tr>
+                  </tbody>
+                  <!--Table body-->
+              </table>
+              <!--Table-->
+              <!--Bottom Table UI-->
+              <div class="d-flex justify-content-center">
+                <!--Pagination -->
+                <nav class="my-4 pt-4">
+                    <ul class="pagination pagination-sm pg-blue">
+                        <!--Arrow left-->
+                        <li class="page-item disabled">
+                            <a class="page-link" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                        </li>
+                        <!--Numbers-->
+                        <li class="page-item active"><a class="page-link">1</a></li>
+                        <li class="page-item"><a class="page-link">2</a></li>
+                        <li class="page-item"><a class="page-link">3</a></li>
+                        <li class="page-item"><a class="page-link">4</a></li>
+                        <li class="page-item"><a class="page-link">5</a></li>
+                        <!--Arrow right-->
+                        <li class="page-item">
+                            <a class="page-link" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!--/Pagination -->
+            </div>
+            <!--Bottom Table UI-->
+          </div>
+        </div>
+      </div>
+
+      
+  </div>
+  </body>
+</html>
+    
+    

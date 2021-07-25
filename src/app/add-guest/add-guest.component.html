@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+  <body>
+    <nav class="navbar">
+      <div class="brandName">Prism</div>
+        <button class="btn btn-primary" style="background-color: transparent;"><i class="fa fa-user fa-3x" aria-hidden="true"></i>
+        </button>      
+    </nav> 
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="card">
+          <div class="card-body" style="height: 790px;">
+            <img class="btn-md" src="assets/profile.png" alt="" style="padding-left: 100px;">
+            <h5 class="card-title" style="padding-left: 95px;">Emily Smith</h5>
+            <h6 style="padding-left: 120px; font-size: 14px;">Manager</h6>
+            <div class="button">
+            <a routerLink="/guests" routerLinkActive="active" type="button" class="btn btn-outline-dark btn-rounded" style="width: 250px; transform: translateX(11%); "><i class="fa fa-user-o pr-5"
+              aria-hidden="true"></i>Manage Guest</a>  
+            </div>
+            <div class="button">  
+            <a routerLink="/reservation" type="button" class="btn btn-outline-dark btn-rounded" style="width: 250px; transform: translateX(11%); "><i class="fa fa-calendar pr-4"
+              aria-hidden="true"></i>Manage Reservation</a> 
+            </div>  
+            <div class="button">   
+            <a routerLink="/rooms" type="button" class="btn btn-outline-dark btn-rounded" style="width: 250px; transform: translateX(11%); "><i class="fa fa-bed pr-5"
+              aria-hidden="true"></i>Manage Room</a> 
+            </div>   
+            <div class="button"> 
+            <a routerLink="/roomTypes" type="button" class="btn btn-outline-dark btn-rounded" style="width: 250px; transform: translateX(11%); "><i class="fa fa-sign-out pr-3"
+              aria-hidden="true"></i>Manage RoomTypes</a>
+            </div>                        
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-9">  
+        <div class="card">
+          <div class="heading">
+            <div class="title">Guest Manager
+              <button class="btn" [routerLink]="'/guest'" style="background-color: transparent; padding-right: 40px; float: right;"><i class="fa fa-refresh fa-2x" aria-hidden="true"></i>
+              </button>
+              <button class="btn" [routerLink]="'/addGuest'" style="background-color: transparent; padding-right: 20px; float: right;"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+              </button>  
+            </div>
+          </div>
+          <div class="card-body">
+            <form class="my-form">
+                <div class="form-group row">
+                    <label for="full_name" class="col-md-4 col-form-label text-md-left">GuestNo</label>
+                    <div class="col-md-6">
+                        <input type="text" id="guest_no" class="form-control" name="GuestNo" [(ngModel)]="guest.GuestId">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="email_address" class="col-md-4 col-form-label text-md-left">Guest Name</label>
+                    <div class="col-md-6">
+                        <input type="text" id="email_address" class="form-control" name="Name" [(ngModel)]="guest.Name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="user_name" class="col-md-4 col-form-label text-md-left">Email Address</label>
+                    <div class="col-md-6">
+                        <input type="text" id="user_name" class="form-control" name="Email"[(ngModel)]="guest.Email">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="phone_number" class="col-md-4 col-form-label text-md-left">NIC</label>
+                    <div class="col-md-6">
+                        <input type="text" id="phone_number" class="form-control" name="IdNo" [(ngModel)]="guest.IdNo">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="present_address" class="col-md-4 col-form-label text-md-left">Date Of Birth</label>
+                    <div class="col-md-6">
+                        <input type="text" id="present_address" class="form-control" name="DateOfBirth" [(ngModel)]="guest.DateOfBirth">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="permanent_address" class="col-md-4 col-form-label text-md-left">Phone Number</label>
+                    <div class="col-md-6">
+                        <input type="text" id="permanent_address" class="form-control" name="PhoneNo" [(ngModel)]="guest.PhoneNo">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="permanent_address" class="col-md-4 col-form-label text-md-left">Active Status</label>
+                    <div class="col-md-6">
+                        <input type="text" id="permanent_address" class="form-control" name="IsActive" [(ngModel)]="guest.IsActive">
+                    </div>
+                </div>
+                <!-- <div class="form-group row">
+                    <label for="permanent_address" class="col-md-4 col-form-label text-md-left">Active Status</label>
+                    <div class="col-md-6">
+                        <input class="form-control" type="checkbox" id="gridCheck1">
+                    </div>
+                </div>                 -->
+                    <div class="col-md-6 offset-md-4">
+                        <button class="submit" (click)="addGuest()" style="text-align: center;" type="submit">ADD</button>
+                    </div>
+            </form>    
+              
+          </div>
+        </div>
+      </div>
+
+      
+  </div>
+  </body>
+</html>
+    
+    

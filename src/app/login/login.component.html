@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+</head>
+  <body>
+    <nav class="navbar">
+      <div class="brandName">Prism</div>
+        <button class="btn btn-primary" style="background-color: transparent;"><i class="fa fa-user fa-3x" aria-hidden="true"></i>
+        </button>
+      
+    </nav>
+  <img src="assets/login.png" alt="login">
+  <div class="form">
+  <form class="formcorner" action="" method="post" [formGroup]="formGroup"
+  (ngSubmit)="loginProces()">
+    <div class="username">
+      <input class="ip1" type="text" placeholder="Username" id="username" formControlName="email">
+      <i class="fa fa-user icon"></i>
+    </div>
+  <div class="password">
+      <input class="ip1" type="password" placeholder="Password" id="password" formControlName="password">
+      <i class="fa fa-key icon"></i>
+  </div>    
+  <div class="loginbtn">
+  <button class="login" style="text-align: center;" type="submit">LOG IN</button>
+  </div>
+  <div class="pws">
+  <span style="padding-left: 200px;">Forgot Password <a href="#"> -  Reset</a></span><br>
+  </div>
+  <div class="terms">
+    <span>Terms of services and Privacy Policy</span>
+  </div>
+  </form>
+</div>
+</body>  
+ 
+</html>
+
+<router-outlet></router-outlet>
