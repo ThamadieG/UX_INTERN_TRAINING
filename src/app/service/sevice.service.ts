@@ -33,25 +33,28 @@ export class ServiceService {
     return this.httpClient.get<Guests[]>("http://localhost:3000/contacts?GuestId="+guestId);
   }
   public deleteGuest(GuestId){
-    return this.httpClient.delete(this.GUESTS+'?GuestId='+GuestId);
+    return this.httpClient.delete(this.GUESTS+'/'+GuestId);
   }
   public deleteReservation(OrdersId){
-    return this.httpClient.delete(this.ORDERS+'?OrdersId='+OrdersId);
+    return this.httpClient.delete(this.ORDERS+'/'+OrdersId);
   }
   public deleteRoom(RoomId){
-    return this.httpClient.delete(this.ROOMS+'?RoomId='+RoomId);
+    return this.httpClient.delete(this.ROOMS+'/'+RoomId);
   }
   public deleteRoomType(RoomTypeId){
-    return this.httpClient.delete(this.ROOMTYPES+'?RoomTypeId='+RoomTypeId);
-  }
-  public addGuest(guestData: Guest) {
-    const headers = { 'content-type': 'application/json'}
-    const body=JSON.stringify(guestData);
-    console.log("bodyyyyyyyyyyyyyyyyy"+body);
-    return this.httpClient.post(this.GUESTS, body, {'headers':headers});
+    return this.httpClient.delete(this.ROOMTYPES+'/'+RoomTypeId);
   }
   public create(data:any):Observable<any>{
     return this.httpClient.post(this.GUESTS, data);
+  }
+  public update(id, data): Observable<any> {
+    return this.httpClient.put(this.GUESTS+'/'+id, data);
+  }
+  public getCurrentGuest(id){
+    return this.httpClient.get(this.GUESTS+'/'+id);
+  }
+  public updateGuest(id,data){
+    return this.httpClient.put(this.GUESTS+'/'+id,data);
   }
   
 }

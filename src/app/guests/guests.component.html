@@ -42,9 +42,9 @@
         <div class="card">
           <div class="heading">
             <div class="title">Guest Manager
-              <button class="btn" [routerLink]="'/guest'" style="background-color: transparent; padding-right: 40px; float: right;"><i class="fa fa-refresh fa-2x" aria-hidden="true"></i>
+              <button class="btn" routerLink="/guests" style="background-color: transparent; padding-right: 40px; float: right;"><i class="fa fa-refresh fa-2x" aria-hidden="true"></i>
               </button>
-              <button class="btn" [routerLink]="'/addGuest'" style="background-color: transparent; padding-right: 20px; float: right;"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+              <button class="btn" routerLink="/addGuest" style="background-color: transparent; padding-right: 20px; float: right;"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
               </button>  
             </div>
           </div>
@@ -90,7 +90,7 @@
                             </td>
                             </ng-container>
                           <td>
-                            <button type="button" class="btn dt-edit" style="background-color: transparent;">
+                            <button type="button" routerLink="/editGuest/{{guest.id}}" class="btn dt-edit" style="background-color: transparent;">
                               <i class="fa fa-pencil" aria-hidden="true"></i>
                             </button>
                             <button type="button" (click)="deleteItem(guest.GuestId)" class="btn dt-delete" style="background-color: transparent;">

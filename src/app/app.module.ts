@@ -11,6 +11,7 @@ import { RoomsComponent } from './rooms/rooms.component';
 import { RoomTypesComponent } from './room-types/room-types.component';
 import { LoginComponent } from './login/login.component';
 import { AddGuestComponent } from './add-guest/add-guest.component';
+import { EditGuestComponent } from './edit-guest/edit-guest.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AddGuestComponent } from './add-guest/add-guest.component';
     RoomTypesComponent,
     LoginComponent,
     AddGuestComponent,
+    EditGuestComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,8 @@ import { AddGuestComponent } from './add-guest/add-guest.component';
       { path: 'roomTypes', component: RoomTypesComponent },
       { path: 'guests', component: GuestsComponent },
       { path: 'addGuest', component: AddGuestComponent },
+      { path: 'editGuest/:id', component: EditGuestComponent }
+
 ]),
   ],
   providers: [],

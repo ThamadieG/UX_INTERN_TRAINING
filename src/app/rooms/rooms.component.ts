@@ -40,13 +40,12 @@ export class RoomsComponent implements OnInit {
   }
 
   deleteItem(room){
-    this.service.deleteRoom(room.RoomId)
-        .subscribe(response => {
-          this.rooms = this.rooms.filter(item => item.id !== room.RoomId);
-          console.log(response);
-        },
+    this.service.deleteRoom(room).subscribe((result)=>{
+      console.log("Result", result);
+      alert("Room deleted successful!!     id:"+room);
+      })
         error => {
           console.log(error);
-        });
+        };
   }
 }

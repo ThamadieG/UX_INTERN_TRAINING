@@ -47,7 +47,7 @@
             </div>
           </div>
           <div class="card-body">
-            <form class="my-form" [formGroup]="formGroup">
+            <form class="my-form" [formGroup]="formGroup" (ngSubmit)="updateGuest()">
                 <div class="form-group row">
                     <label for="full_name" class="col-md-4 col-form-label text-md-left">GuestNo</label>
                     <div class="col-md-6">
@@ -97,7 +97,7 @@
                     </div>
                 </div>                 -->
                     <div class="col-md-6 offset-md-4">
-                        <button class="submit" (click)="addGuest()" style="text-align: center;" type="submit">ADD</button>
+                        <button class="submit" style="text-align: center;" type="submit">UPDATE</button>
                     </div>
             </form>    
               

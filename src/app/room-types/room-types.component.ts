@@ -37,14 +37,13 @@ export class RoomTypesComponent implements OnInit {
   }
 
   deleteItem(roomType){
-    this.service.deleteRoomType(roomType.RoomTypeId)
-        .subscribe(response => {
-          this.roomTypes = this.roomTypes.filter(item => item.id !== roomType.RoomTypeId);
-          console.log(response);
-        },
+    this.service.deleteRoomType(roomType).subscribe((result)=>{
+      console.log("Result", result);
+      alert("Room deleted successful!!     id:"+roomType);
+      })
         error => {
           console.log(error);
-        });
+        };
   }
 
 }

@@ -43,27 +43,15 @@ export class GuestsComponent implements OnInit {
       }
     ); 
   }
-  deleteGuest(): void {
-    this.service.deleteGuest(this.currentProduct.GuestId)
-      .subscribe(
-        response => {
-          console.log(response);
-          this.router.navigate(['/guests']);
-        },
-        error => {
-          console.log(error);
-        });
-  }
 
   deleteItem(guest){
-    this.service.deleteGuest(guest.GuestId)
-        .subscribe(response => {
-          this.guests = this.guests.filter(item => item.id !== guest.GuestId);
-          console.log(response);
-        },
+    this.service.deleteGuest(guest).subscribe((result)=>{
+      console.log("Result", result);
+      alert("Room deleted successful!!     id:"+guest);
+      })
         error => {
           console.log(error);
-        });
+        };
   }
 
 }

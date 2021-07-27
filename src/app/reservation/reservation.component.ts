@@ -43,7 +43,7 @@ export class ReservationComponent implements OnInit{
   guests: Guests []=[];
   guestId?:string;
 
-  constructor(private service:ServiceService, private http: HttpClient) { }
+  constructor(private service:ServiceService, private http: HttpClient, private router:Router) { }
 
   ngOnInit(): void{
     this.getOrders();
@@ -73,14 +73,13 @@ export class ReservationComponent implements OnInit{
   }
 
   deleteItem(order){
-    this.service.deleteReservation(order.OrdersId)
-        .subscribe(response => {
-          this.order = this.order.filter(item => item.id !== order.OrdersId);
-          console.log(response);
-        },
+    this.service.deleteReservation(order).subscribe((result)=>{
+      console.log("Result", result);
+      alert("Room deleted successful!!     id:"+order);
+      })
         error => {
           console.log(error);
-        });
+        };
   }
 
 }
