@@ -10,6 +10,16 @@ body, html {
     padding-left: 20px;
     color: #ffffff;
   }
+  .submit {
+    font-family: Segoe UI;
+    font-size: 20px;
+    color: #ffffff;
+    letter-spacing: 1px;
+    line-height: 30px;
+    border-radius: 21px;
+    background-image: radial-gradient(#5353FD, #803EBB);
+    transition: all 0.3s ease 0s;
+  }
   
   .card{
     border-radius: 35px;
@@ -55,7 +65,7 @@ body, html {
 .row {
     padding-bottom: 40px;
     padding-right: 0px;
-    padding-left: 150px;
+    padding-left: 50px;
     margin-right: 0px;
     margin-left: 0px;
 }

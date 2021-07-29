@@ -8,11 +8,9 @@
     <nav class="navbar">
       <div class="brandName">Prism</div>
         <button class="btn btn-primary" style="background-color: transparent;"><i class="fa fa-user fa-3x" aria-hidden="true"></i>
-        </button>
-      
-    </nav>
-
-    <div class="row">
+        </button>      
+    </nav> 
+    <div class="row" style="padding-top: 50px;">
       <div class="col-sm-3">
         <div class="card">
           <div class="card-body" style="height: 790px;">
@@ -41,50 +39,38 @@
       <div class="col-sm-9">  
         <div class="card">
           <div class="heading">
-            <div class="title">Room Types Manager
-              <button class="btn" [routerLink]="'/room'" style="background-color: transparent; padding-right: 40px; float: right;"><i class="fa fa-refresh fa-2x" aria-hidden="true"></i>
+            <div class="title">Room Type Manager
+              <button class="btn" [routerLink]="'/roomTypes'" style="background-color: transparent; padding-right: 40px; float: right;"><i class="fa fa-refresh fa-2x" aria-hidden="true"></i>
               </button>
               <button class="btn" [routerLink]="'/addRoomType'" style="background-color: transparent; padding-right: 20px; float: right;"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
               </button>  
             </div>
           </div>
           <div class="card-body">
-              <!--Table-->
-              <table class="table table-hover">
-                  <!--Table head-->
-                  <thead class="thead-light">
-                      <tr class="text-black">
-                        <th>Code</th>
-                        <th>Name</th>
-                        <th>Action</th>
-                      </tr>
-                  </thead>
-                  <!--Table head-->
-                  <!--Table body-->
-                  <tbody>
-                    <tr *ngFor="let roomType of roomTypes  | paginate: { itemsPerPage: 9, currentPage: page, totalItems:totalLength }">
-                      <td>{{roomType.Code}}</td>
-                      <td>{{roomType.Name}}</td> 
-                          <td>
-                            <button type="button"  routerLink="/editRoomType/{{roomType.RoomTypeId}}" class="btn dt-edit" style="background-color: transparent;">
-                              <i class="fa fa-pencil" aria-hidden="true"></i>
-                            </button>
-                            <button type="button" (click)="deleteItem(roomType.RoomTypeId)" class="btn dt-delete" style="background-color: transparent;">
-                              <i class="fa fa-trash" aria-hidden="true"></i>
-                            </button>
-                          </td>
-                      </tr>
-                  </tbody>
-                  <!--Table body-->
-              </table>
-              <!--Table-->
-              <!--Bottom Table UI-->
-              <div class="d-flex justify-content-center">
-                <!--Pagination -->
-                <pagination-controls (pageChange)="page = $event"></pagination-controls>
-                <!--/Pagination -->
-            </div>
-            <!--Bottom Table UI-->
+            <form class="my-form" [formGroup]="formGroup" (ngSubmit)="updateRoomType()">
+                <div class="form-group row">
+                    <label for="full_name" class="col-md-4 col-form-label text-md-left">RoomTypeId</label>
+                    <div class="col-md-6">
+                        <input type="text" id="guest_no" class="form-control" name="GuestNo" formControlName="RoomTypeId">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="email_address" class="col-md-4 col-form-label text-md-left">Code</label>
+                    <div class="col-md-6">
+                        <input type="text" id="email_address" class="form-control" name="Name" formControlName="Code">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="phone_number" class="col-md-4 col-form-label text-md-left">Name</label>
+                    <div class="col-md-6">
+                        <input type="text" id="phone_number" class="form-control" name="IdNo" formControlName="Name">
+                    </div>
+                </div>      
+                    <div class="col-md-6 offset-md-4">
+                        <button class="submit" style="text-align: center;" type="submit">UPDATE</button>
+                    </div>
+            </form>    
+              
           </div>
         </div>
       </div>

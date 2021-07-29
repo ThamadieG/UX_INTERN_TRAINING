@@ -55,7 +55,7 @@ export class EditGuestComponent implements OnInit {
       })
     })
   }
-
+ 
   public updateGuest(){
     this.service.updateGuest(this.activerouter.snapshot.params.id,this.formGroup.value).subscribe((result)=>{
       console.log(result);

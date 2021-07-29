@@ -20,7 +20,7 @@
             <h5 class="card-title" style="padding-left: 95px;">Emily Smith</h5>
             <h6 style="padding-left: 120px; font-size: 14px;">Manager</h6>
             <div class="button">
-            <a routerLink="/guests" routerLinkActive="active" type="button" class="btn btn-outline-dark btn-rounded" style="width: 250px; transform: translateX(11%); "><i class="fa fa-user-o pr-5"
+            <a routerLink="/guests" type="button" class="btn btn-outline-dark btn-rounded" style="width: 250px; transform: translateX(11%); "><i class="fa fa-user-o pr-5"
               aria-hidden="true"></i>Manage Guest</a>  
             </div>
             <div class="button">  
@@ -28,7 +28,7 @@
               aria-hidden="true"></i>Manage Reservation</a> 
             </div>  
             <div class="button">   
-            <a routerLink="/rooms" type="button" class="btn btn-outline-dark btn-rounded" style="width: 250px; transform: translateX(11%); "><i class="fa fa-bed pr-5"
+            <a routerLink="/rooms" routerLinkActive="active" type="button" class="btn btn-outline-dark btn-rounded" style="width: 250px; transform: translateX(11%); "><i class="fa fa-bed pr-5"
               aria-hidden="true"></i>Manage Room</a> 
             </div>   
             <div class="button"> 
@@ -41,10 +41,10 @@
       <div class="col-sm-9">  
         <div class="card">
           <div class="heading">
-            <div class="title">Guest Manager
-              <button class="btn" [routerLink]="'/guest'" style="background-color: transparent; padding-right: 40px; float: right;"><i class="fa fa-refresh fa-2x" aria-hidden="true"></i>
+            <div class="title">Room Manager
+              <button class="btn" [routerLink]="'/room'" style="background-color: transparent; padding-right: 40px; float: right;"><i class="fa fa-refresh fa-2x" aria-hidden="true"></i>
               </button>
-              <button class="btn" [routerLink]="'/addGuest'" style="background-color: transparent; padding-right: 20px; float: right;"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+              <button class="btn" [routerLink]="'/addRoom'" style="background-color: transparent; padding-right: 20px; float: right;"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
               </button>  
             </div>
           </div>
@@ -65,11 +65,24 @@
                   <!--Table head-->
                   <!--Table body-->
                   <tbody>
-                    <tr *ngFor="let room of rooms">
+                    <tr *ngFor="let room of rooms  | paginate: { itemsPerPage: 9, currentPage: page, totalItems:totalLength }">
                       <td>{{room.RoomNo}}</td>
                       <td>{{room.RoomTypeId}}</td>
                       <td>{{room.Price}}</td>
-                      <td>{{room.RoomStatus}}</td>
+                      <ng-container *ngIf="room.RoomStatus === 'Clean'">
+                        <td>
+                          <div class="form-check">
+                            <button type="button" class="btn btn-sm" style="background-color: #44EF55; border-radius: 10px; color:white;">Clean</button>
+                          </div>
+                        </td>
+                        </ng-container>
+                        <ng-container *ngIf="room.RoomStatus === 'Dirty'">
+                          <td>
+                            <div class="form-check">
+                              <button type="button" class="btn btn-sm" style="background-color: #F1394B; border-radius: 10px; color:white;">Dirty</button>
+                            </div>
+                          </td>
+                          </ng-container>
                           <ng-container *ngIf="room.IsActive === true">
                           <td>
                             <div class="form-check" style="background-color: #44EF55;">
@@ -86,7 +99,7 @@
                             </td>
                             </ng-container>
                           <td>
-                            <button type="button" class="btn dt-edit" style="background-color: transparent;">
+                            <button type="button" routerLink="/editRoom/{{room.RoomId}}" class="btn dt-edit" style="background-color: transparent;">
                               <i class="fa fa-pencil" aria-hidden="true"></i>
                             </button>
                             <button type="button" (click)="deleteItem(room.RoomId)" class="btn dt-delete" style="background-color: transparent;">
@@ -101,30 +114,7 @@
               <!--Bottom Table UI-->
               <div class="d-flex justify-content-center">
                 <!--Pagination -->
-                <nav class="my-4 pt-4">
-                    <ul class="pagination pagination-sm pg-blue">
-                        <!--Arrow left-->
-                        <li class="page-item disabled">
-                            <a class="page-link" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                        </li>
-                        <!--Numbers-->
-                        <li class="page-item active"><a class="page-link">1</a></li>
-                        <li class="page-item"><a class="page-link">2</a></li>
-                        <li class="page-item"><a class="page-link">3</a></li>
-                        <li class="page-item"><a class="page-link">4</a></li>
-                        <li class="page-item"><a class="page-link">5</a></li>
-                        <!--Arrow right-->
-                        <li class="page-item">
-                            <a class="page-link" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                        </li>
-                    </ul>
-                </nav>
+                <pagination-controls (pageChange)="page = $event"></pagination-controls>
                 <!--/Pagination -->
             </div>
             <!--Bottom Table UI-->

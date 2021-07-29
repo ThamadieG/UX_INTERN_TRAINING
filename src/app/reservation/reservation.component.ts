@@ -42,6 +42,8 @@ export class ReservationComponent implements OnInit{
   orders: Orders []=[];
   guests: Guests []=[];
   guestId?:string;
+  totalLength:any;
+  page:number=1;
 
   constructor(private service:ServiceService, private http: HttpClient, private router:Router) { }
 
@@ -65,6 +67,8 @@ export class ReservationComponent implements OnInit{
       (response1:any) => {
         console.log(response1);
         this.orders = response1;
+
+        this.totalLength=response1.length; 
       },
       (error) =>{
         console.log(error);

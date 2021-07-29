@@ -13,7 +13,7 @@ export class Guests {
     public Email: string,
     public IdNo: string,
     public DateOfBirth: string,
-    public IsActive: string,
+    public IsActive: boolean,
   ) {
   }
 }
@@ -45,7 +45,7 @@ export class AddGuestComponent implements OnInit {
   }
 
   public addGuest():void {
-    this.service.create(this.formGroup.value).subscribe(result =>{
+    this.service.createGuest(this.formGroup.value).subscribe(result =>{
       console.log(result);
       alert("Data added successfully");
     })

@@ -11,7 +11,7 @@ export class Guests {
     public Email: string,
     public IdNo: string,
     public DateOfBirth: string,
-    public IsActive: string,
+    public IsActive: boolean,
   ) {
   }
 }
@@ -23,26 +23,29 @@ export class Guests {
 })
 export class GuestsComponent implements OnInit {
   guests=null as any;
-  posts;
-  currentProduct= null as any;
-
+  totalLength:any;
+  page:number=1;
+  
   constructor(private service:ServiceService, private httpClient:HttpClient, private router:Router) { }
 
   ngOnInit(): void{
     this.getGuests();
-  }
+  } 
 
   getGuests(){
     this.service.getGuests().subscribe(
       (response) => {
         console.log(response);
         this.guests = response;
+        
+        this.totalLength=response.length;  
       },
       (error) =>{
         console.log(error);
       }
     ); 
   }
+   
 
   deleteItem(guest){
     this.service.deleteGuest(guest).subscribe((result)=>{

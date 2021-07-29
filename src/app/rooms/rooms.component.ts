@@ -20,6 +20,8 @@ export class Rooms {
 })
 export class RoomsComponent implements OnInit {
   rooms=null as any;
+  totalLength:any;
+  page:number=1;
 
   constructor(private service:ServiceService) { }
 
@@ -32,6 +34,8 @@ export class RoomsComponent implements OnInit {
       (response) => {
         console.log(response);
         this.rooms = response;
+
+        this.totalLength=response.length;
       },
       (error) =>{
         console.log(error);

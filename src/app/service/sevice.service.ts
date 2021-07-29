@@ -44,17 +44,41 @@ export class ServiceService {
   public deleteRoomType(RoomTypeId){
     return this.httpClient.delete(this.ROOMTYPES+'/'+RoomTypeId);
   }
-  public create(data:any):Observable<any>{
+  public createGuest(data:any):Observable<any>{
     return this.httpClient.post(this.GUESTS, data);
   }
-  public update(id, data): Observable<any> {
-    return this.httpClient.put(this.GUESTS+'/'+id, data);
+  public createOrder(data:any):Observable<any>{
+    return this.httpClient.post(this.ORDERS, data);
+  }
+  public createRoom(data:any):Observable<any>{
+    return this.httpClient.post(this.ROOMS, data);
+  }
+  public createRoomType(data:any):Observable<any>{
+    return this.httpClient.post(this.ROOMTYPES, data);
   }
   public getCurrentGuest(id){
     return this.httpClient.get(this.GUESTS+'/'+id);
   }
+  public getCurrentOrder(id){
+    return this.httpClient.get(this.ORDERS+'/'+id);
+  }
+  public getCurrentRoom(id){
+    return this.httpClient.get(this.ROOMS+'/'+id);
+  }
+  public getCurrentRoomType(id){
+    return this.httpClient.get(this.ROOMTYPES+'/'+id);
+  }
   public updateGuest(id,data){
     return this.httpClient.put(this.GUESTS+'/'+id,data);
+  }
+  public updateOrder(id,data){
+    return this.httpClient.put(this.ORDERS+'/'+id,data);
+  }
+  public updateRoom(id,data){
+    return this.httpClient.put(this.ROOMS+'/'+id,data);
+  }
+  public updateRoomType(id,data){
+    return this.httpClient.put(this.ROOMTYPES+'/'+id,data);
   }
   
 }

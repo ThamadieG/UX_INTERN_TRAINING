@@ -18,11 +18,11 @@
             <h5 class="card-title" style="padding-left: 95px;">Emily Smith</h5>
             <h6 style="padding-left: 120px; font-size: 14px;">Manager</h6>
             <div class="button">
-            <a routerLink="/guests" routerLinkActive="active" type="button" class="btn btn-outline-dark btn-rounded" style="width: 250px; transform: translateX(11%); "><i class="fa fa-user-o pr-5"
+            <a routerLink="/guests" type="button" class="btn btn-outline-dark btn-rounded" style="width: 250px; transform: translateX(11%); "><i class="fa fa-user-o pr-5"
               aria-hidden="true"></i>Manage Guest</a>  
             </div>
             <div class="button">  
-            <a routerLink="/reservation" type="button" class="btn btn-outline-dark btn-rounded" style="width: 250px; transform: translateX(11%); "><i class="fa fa-calendar pr-4"
+            <a routerLink="/reservation" routerLinkActive="active" type="button" class="btn btn-outline-dark btn-rounded" style="width: 250px; transform: translateX(11%); "><i class="fa fa-calendar pr-4"
               aria-hidden="true"></i>Manage Reservation</a> 
             </div>  
             <div class="button">   
@@ -39,65 +39,63 @@
       <div class="col-sm-9">  
         <div class="card">
           <div class="heading">
-            <div class="title">Guest Manager
-              <button class="btn" [routerLink]="'/guest'" style="background-color: transparent; padding-right: 40px; float: right;"><i class="fa fa-refresh fa-2x" aria-hidden="true"></i>
+            <div class="title">Reservation Manager
+              <button class="btn" [routerLink]="'/reservation'" style="background-color: transparent; padding-right: 40px; float: right;"><i class="fa fa-refresh fa-2x" aria-hidden="true"></i>
               </button>
-              <button class="btn" [routerLink]="'/addGuest'" style="background-color: transparent; padding-right: 20px; float: right;"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+              <button class="btn" [routerLink]="'/addOrder'" style="background-color: transparent; padding-right: 20px; float: right;"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
               </button>  
             </div>
           </div>
           <div class="card-body">
             <form class="my-form" [formGroup]="formGroup">
                 <div class="form-group row">
-                    <label for="full_name" class="col-md-4 col-form-label text-md-left">GuestNo</label>
+                    <label for="full_name" class="col-md-4 col-form-label text-md-left">OrdersId</label>
                     <div class="col-md-6">
-                        <input type="text" id="guest_no" class="form-control" name="GuestNo" formControlName="GuestId">
+                        <input type="text" id="guest_no" class="form-control" name="GuestNo" formControlName="OrdersId">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="email_address" class="col-md-4 col-form-label text-md-left">Guest Name</label>
+                    <label for="email_address" class="col-md-4 col-form-label text-md-left">ReservationNo</label>
                     <div class="col-md-6">
-                        <input type="text" id="email_address" class="form-control" name="Name" formControlName="Name">
+                        <input type="text" id="email_address" class="form-control" name="Name" formControlName="ReservationNo">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="user_name" class="col-md-4 col-form-label text-md-left">Email Address</label>
+                    <label for="email_address" class="col-md-4 col-form-label text-md-left">Name</label>
                     <div class="col-md-6">
-                        <input type="text" id="user_name" class="form-control" name="Email"formControlName="Email">
+                    <select formControlName="GuestId" class="form-control">
+                            <option *ngFor="let guest of guests" [ngValue]="guest.GuestId">
+                                {{guest.Name}}
+                            </option>
+                    </select>
+                </div>
+                </div>
+                <div class="form-group row">
+                    <label for="phone_number" class="col-md-4 col-form-label text-md-left">RoomId</label>
+                    <div class="col-md-6">
+                        <input type="text" id="phone_number" class="form-control" name="IdNo" formControlName="RoomId">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="phone_number" class="col-md-4 col-form-label text-md-left">NIC</label>
+                    <label for="present_address" class="col-md-4 col-form-label text-md-left">ArrivalDate</label>
                     <div class="col-md-6">
-                        <input type="text" id="phone_number" class="form-control" name="IdNo" formControlName="IdNo">
+                        <input type="date" id="present_address" class="form-control" name="DateOfBirth" formControlName="ArrivalDate">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="present_address" class="col-md-4 col-form-label text-md-left">Date Of Birth</label>
+                    <label for="permanent_address" class="col-md-4 col-form-label text-md-left">DepartureDate</label>
                     <div class="col-md-6">
-                        <input type="date" id="present_address" class="form-control" name="DateOfBirth" formControlName="DateOfBirth">
+                        <input type="date" id="permanent_address" class="form-control" name="PhoneNo" formControlName="DepartureDate">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="permanent_address" class="col-md-4 col-form-label text-md-left">Phone Number</label>
+                    <label for="permanent_address" class="col-md-4 col-form-label text-md-left">Notes</label>
                     <div class="col-md-6">
-                        <input type="text" id="permanent_address" class="form-control" name="PhoneNo" formControlName="PhoneNo">
+                        <input type="text" id="permanent_address" class="form-control" name="IsActive" formControlName="Notes">
                     </div>
-                </div>
-                <!-- <div class="form-group row">
-                    <label for="permanent_address" class="col-md-4 col-form-label text-md-left">Active Status</label>
-                    <div class="col-md-6">
-                        <input type="text" id="permanent_address" class="form-control" name="IsActive" formControlName="IsActive">
-                    </div>
-                </div> -->
-                <div class="form-group row">
-                    <label for="permanent_address" class="col-md-4 col-form-label text-md-left">Active Status</label>
-                    <div class="col-md-6">
-                        <input class="form-control" type="checkbox" id="gridCheck1" formControlName="IsActive">
-                    </div>
-                </div>                
+                </div>             
                     <div class="col-md-6 offset-md-4">
-                        <button class="submit" (click)="addGuest()" style="text-align: center;" type="submit">ADD</button>
+                        <button class="submit" (click)="addOrder()" style="text-align: center;" type="submit">ADD</button>
                     </div>
             </form>    
               
